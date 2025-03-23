@@ -120,7 +120,7 @@ export default function Subsidy() {
                 <DialogHeader>
                   <DialogTitle>Edit Profile</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you're
+                    Make changes to your profile here. Click save when you&apos;re
                     done.
                   </DialogDescription>
                 </DialogHeader>

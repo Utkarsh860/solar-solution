@@ -25,16 +25,16 @@ export const InfiniteMovingCards = ({
 
   useEffect(() => {
     addAnimation();
-  }, []);
+  }, [addAnimation]);
   const [start, setStart] = useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function addAnimation() {
    if (containerRef.current && scrollerRef.current) {
      setStart(true); // ✅ Ensure animation class applies earlier
 
      const scrollerContent = Array.from(scrollerRef.current.children);
-     scrollerContent.forEach((item, index) => {
+     scrollerContent.forEach((item) => {
        const duplicatedItem = item.cloneNode(true);
-       console.log(`Cloning item ${index + 1}:`, duplicatedItem); // 🔍 Debug log
        if (scrollerRef.current) {
          scrollerRef.current.appendChild(duplicatedItem);
        }
@@ -86,7 +86,7 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
             className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-slate-800 bg-gradient-to-r from-gray-800 to-gray-900 px-4 py-4"
             key={item.name}
