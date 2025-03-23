@@ -47,16 +47,16 @@ export default function Subsidy() {
       </h2>
       <div className="flex justify-between mt-4 md:mt-16 h-[40rem] gap-1 md:gap-8 flex-col-reverse md:flex-row">
         <div className="flex flex-col gap-4 md:w-1/2">
-          <p className="text-neutral-500 dark:text-neutral-400 text-xl md:text-[1.4rem] font-sans tracking-tight font-light">
+          <div className="text-neutral-500 dark:text-neutral-400 text-xl md:text-[1.4rem] font-sans tracking-tight font-light">
             Unlock solar savings with{"  "}
             <LinkPreview
-              url="https://pmsuryagharyojana.in/"
+              url="https://www.india.gov.in/spotlight/pm-surya-ghar-muft-bijli-yojana"
               className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-yellow-200 to-orange-500 text-[1.7rem]"
             >
-                Govt. PM Surya Ghar Yojana
+              Govt. PM Surya Ghar Yojana
             </LinkPreview>{" "}
             Govt. subsidy up to ₹1,08,000 & Free Electricity.
-          </p>
+          </div>
           <button
             className="h-12 w-1/2 rounded-md border border-slate-800 bg-gradient-to-r from-gray-800 to-gray-900 px-6 font-medium text-white hover:opacity-80"
             onClick={() => alert("Get a Free Consult")}
@@ -161,8 +161,9 @@ export default function Subsidy() {
               >
                 <p className="text-base flex justify-between">
                   <span className="text-slate-400 block">Govt. Subsidy:</span>
-                  <span className="text-lg font-sans block"> ₹
-                  {subsidyRates[systemSize].toLocaleString()}
+                  <span className="text-lg font-sans block">
+                    {" "}
+                    ₹{subsidyRates[systemSize].toLocaleString()}
                   </span>
                 </p>
                 <p className="text-base flex justify-between">
