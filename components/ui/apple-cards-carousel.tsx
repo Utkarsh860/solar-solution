@@ -6,6 +6,8 @@ import React, {
   createContext,
   useContext,
   JSX,
+  RefObject,
+  useCallback,
 } from "react";
 import {
   IconArrowNarrowLeft,
@@ -168,13 +170,19 @@ export const Card = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { onCardClose, currentIndex } = useContext(CarouselContext);
 
+    const handleClose = useCallback(() => {
+    setOpen(false);
+    onCardClose(index);
+  }, [index, onCardClose]);
+    
+
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         handleClose();
       }
     }
-
+   
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
@@ -183,18 +191,19 @@ export const Card = ({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [handleClose, open]);
 
-  useOutsideClick(containerRef, () => handleClose());
+   useOutsideClick(containerRef as RefObject<HTMLDivElement>, () =>
+     handleClose()
+   );
+
+
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-    onCardClose(index);
-  };
+
 
   return (
     <>

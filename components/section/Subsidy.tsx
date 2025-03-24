@@ -17,7 +17,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function Subsidy() {
-  const [systemSize, setSystemSize] = useState("3");
+  const [systemSize, setSystemSize] = useState<keyof typeof subsidyRates>(3);
+
   const [loanAmount, setLoanAmount] = useState(0);
   const [tenure, setTenure] = useState("5");
   const [emi, setEmi] = useState(0);
@@ -37,7 +38,7 @@ export default function Subsidy() {
       (Math.pow(1 + interestRate, tenureMonths) - 1);
 
     setLoanAmount(finalCost);
-    setEmi(monthlyEMI.toFixed(2));
+    setEmi(Number(monthlyEMI.toFixed(2)));
   };
 
   return (
@@ -81,7 +82,9 @@ export default function Subsidy() {
             </label>
             <select
               value={systemSize}
-              onChange={(e) => setSystemSize(e.target.value)}
+              onChange={(e) =>
+                setSystemSize(Number(e.target.value) as 3 | 5 | 10)
+              }
               className="w-full p-3 mt-2 text-white bg-gray-900 border border-gray-700 rounded-lg cursor-pointer"
             >
               <option value="3">3 kW</option>
@@ -120,8 +123,8 @@ export default function Subsidy() {
                 <DialogHeader>
                   <DialogTitle>Edit Profile</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you&apos;re
-                    done.
+                    Make changes to your profile here. Click save when
+                    you&apos;re done.
                   </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
