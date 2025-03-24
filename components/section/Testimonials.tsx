@@ -114,12 +114,12 @@ export default function Testimonials() {
           <InfiniteMovingCards
             items={testimonials}
             direction="right"
-            speed="normal"
+            speed="slow"
           />
           <InfiniteMovingCards
             items={testimonials}
             direction="left"
-            speed="normal"
+            speed="slow"
           />
         </div>
       </div>
